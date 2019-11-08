@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+"""__Authored__ = troyerjl and zachary kline"""
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
 # http://www.apache.org/licenses/LICENSE-2.0
@@ -18,17 +18,25 @@
 
 
 def remove_adjacent(nums):
-    """Your code goes here.  Edit this docstring."""
-    return
-
+    n = 1
+    k = len(nums)
+    while n < k:
+        if nums[n] == nums[n-1]:
+            nums.pop(n)
+            k -= 1
+        else:
+            n += 1
+    return nums
 
 # E. Given two lists sorted in increasing order, create and return a merged
 # list of all the elements in sorted order. You may modify the passed in lists.
 # The solution should work in "linear" time, making a single pass of both lists.
 # Hint: Don't use `sort` or `sorted` -- they are not linear time.
 def linear_merge(list1, list2):
-    """Your code goes here.  Edit this docstring."""
-    return
+    result = []
+    while len(list1) and len(list2):
+        result.append((list1 if list1[-1] > list2[-1] else list2).pop(-1))
+    return (result + list1 + list2)[-1::-1]
 
 
 # Simple provided test() function used in main() to print

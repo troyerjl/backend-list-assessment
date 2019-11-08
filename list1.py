@@ -7,7 +7,7 @@
 
 # Google's Python Class
 # http://code.google.com/edu/languages/google-python-class/
-
+__Authored__ = "troyerjl and a stack overflow question"
 # Basic list exercises
 # Fill in the code for the functions below. main() is already set up
 # to call the functions with a few different inputs,
@@ -25,8 +25,12 @@
 
 
 def match_ends(words):
-    """Your code goes here.  Edit this docstring."""
-    return
+    counter = 0
+    for word in words:
+        if len(word) >= 2:
+            if word[0:1] == word[-1:]:
+                counter += 1
+    return counter
 
 
 # B. front_x
@@ -37,8 +41,19 @@ def match_ends(words):
 # Hint: this can be done by making 2 lists and sorting each of them
 # before combining them.
 def front_x(words):
-    """Your code goes here.  Edit this docstring."""
-    return
+    x_begin = []
+    reg_word = []
+    sort_list_reg = []
+    sort_list_x = []
+    for word in words:
+        if word[:1] == 'x':
+            x_begin.append(word)
+        else:
+            reg_word.append(word)
+    sort_list_x = sorted(x_begin)
+    sort_list_reg = sorted(reg_word)
+    sort_list_x.extend(sort_list_reg)
+    return sort_list_x
 
 
 # C. sort_last
@@ -48,8 +63,9 @@ def front_x(words):
 # [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
 # Hint: use a custom key= function to extract the last element form each tuple.
 def sort_last(tuples):
-    """Your code goes here.  Edit this docstring."""
-    return
+    sort_tuples = sorted(tuples, key=lambda x: x[-1])
+
+    return sort_tuples
 
 
 # Simple provided test() function used in main() to print
